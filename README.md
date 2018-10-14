@@ -1,5 +1,7 @@
 Bérlet Adatbázis
 
+Solution Name: PassRegister
+
 dolgozók ​(id, név, nem, születési hely, születési év, igazolvány szám)
 bérletek (id, megnevezés, ár, érvényesség ideje, kedvezmény típusa, típus)
 cégek (id, cég neve, székhelye, adószáma, alapítás dátuma, jegyzett tőke)
