@@ -5,7 +5,7 @@ Solution Name: PassRegister
 dolgozók ​(id, név, nem, születési hely, születési év, igazolvány szám)
 bérletek (id, megnevezés, ár, érvényesség ideje, kedvezmény típusa, típus)
 cégek (id, cég neve, székhelye, adószáma, alapítás dátuma, jegyzett tőke)
-vásárlás (vásárlás_id, dolgozó_id, bérlet_id, igazolvány szám, érvényesség kezdete)
+vásárlás (vásárlás_id, dolgozó_id, bérlet_id, bérlet megnevezése, igazolvány szám, érvényesség kezdete)
 
 - Dolgozók listázása / hozzáadása / módosítása / törlése
 - Bérletek listázása / hozzáadása / módosítása / törlése
