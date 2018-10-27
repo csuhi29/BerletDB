@@ -9,5 +9,6 @@ namespace PassRegister.Data
 {
     public class Class1
     {
+
     }
 }
