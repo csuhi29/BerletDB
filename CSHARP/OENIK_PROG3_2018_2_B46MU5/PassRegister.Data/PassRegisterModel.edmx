@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PassRegisterDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BERLET">
+          <Key>
+            <PropertyRef Name="BERLET_ID" />
+          </Key>
+          <Property Name="BERLET_ID" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="MEGNEVEZES" Type="varchar" MaxLength="64" />
+          <Property Name="AR" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="ERVENYESSEG_IDO" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="KEDVEZMENY_TIPUS" Type="varchar" MaxLength="64" />
+          <Property Name="BERLET_FORMATUM" Type="varchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="CEG">
+          <Key>
+            <PropertyRef Name="CEG_ID" />
+          </Key>
+          <Property Name="CEG_ID" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CEGNEV" Type="varchar" MaxLength="64" />
+          <Property Name="SZEKHELY" Type="varchar" MaxLength="64" />
+          <Property Name="ADOSZAM" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="ALAPITAS_DATUMA" Type="date" />
+          <Property Name="JEGYZETT_TOKE" Type="numeric" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="DOLGOZO">
+          <Key>
+            <PropertyRef Name="DOLGOZO_ID" />
+          </Key>
+          <Property Name="DOLGOZO_ID" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CEG_ID" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="NEV" Type="varchar" MaxLength="64" />
+          <Property Name="NEM" Type="char" MaxLength="1" />
+          <Property Name="SZULETESI_HELY" Type="varchar" MaxLength="64" />
+          <Property Name="SZULETESI_EV" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="IGAZOLVANY_SZAM" Type="numeric" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="VASARLAS">
+          <Key>
+            <PropertyRef Name="VASARLAS_ID" />
+          </Key>
+          <Property Name="VASARLAS_ID" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="DOLGOZO_ID" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="BERLET_ID" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="BERLET_MEGNEVEZES" Type="varchar" MaxLength="64" />
+          <Property Name="IGAZOLVANY_SZAM" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="ERVENYESSEG_KEZDETE" Type="date" />
+        </EntityType>
+        <Association Name="FK_BERLET">
+          <End Role="BERLET" Type="Self.BERLET" Multiplicity="1" />
+          <End Role="VASARLAS" Type="Self.VASARLAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BERLET">
+              <PropertyRef Name="BERLET_ID" />
+            </Principal>
+            <Dependent Role="VASARLAS">
+              <PropertyRef Name="BERLET_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CEG_ID">
+          <End Role="CEG" Type="Self.CEG" Multiplicity="1" />
+          <End Role="DOLGOZO" Type="Self.DOLGOZO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CEG">
+              <PropertyRef Name="CEG_ID" />
+            </Principal>
+            <Dependent Role="DOLGOZO">
+              <PropertyRef Name="CEG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOLGOZO">
+          <End Role="DOLGOZO" Type="Self.DOLGOZO" Multiplicity="1" />
+          <End Role="VASARLAS" Type="Self.VASARLAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOLGOZO">
+              <PropertyRef Name="DOLGOZO_ID" />
+            </Principal>
+            <Dependent Role="VASARLAS">
+              <PropertyRef Name="DOLGOZO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PassRegisterDatabaseModelStoreContainer">
+          <EntitySet Name="BERLET" EntityType="Self.BERLET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CEG" EntityType="Self.CEG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOLGOZO" EntityType="Self.DOLGOZO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VASARLAS" EntityType="Self.VASARLAS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BERLET" Association="Self.FK_BERLET">
+            <End Role="BERLET" EntitySet="BERLET" />
+            <End Role="VASARLAS" EntitySet="VASARLAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CEG_ID" Association="Self.FK_CEG_ID">
+            <End Role="CEG" EntitySet="CEG" />
+            <End Role="DOLGOZO" EntitySet="DOLGOZO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOLGOZO" Association="Self.FK_DOLGOZO">
+            <End Role="DOLGOZO" EntitySet="DOLGOZO" />
+            <End Role="VASARLAS" EntitySet="VASARLAS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PassRegisterDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BERLET">
+          <Key>
+            <PropertyRef Name="BERLET_ID" />
+          </Key>
+          <Property Name="BERLET_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="MEGNEVEZES" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="AR" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="ERVENYESSEG_IDO" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="KEDVEZMENY_TIPUS" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="BERLET_FORMATUM" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VASARLAS" Relationship="Self.FK_BERLET" FromRole="BERLET" ToRole="VASARLAS" />
+        </EntityType>
+        <EntityType Name="CEG">
+          <Key>
+            <PropertyRef Name="CEG_ID" />
+          </Key>
+          <Property Name="CEG_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CEGNEV" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="SZEKHELY" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ADOSZAM" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="ALAPITAS_DATUMA" Type="DateTime" Precision="0" />
+          <Property Name="JEGYZETT_TOKE" Type="Decimal" Precision="10" Scale="0" />
+          <NavigationProperty Name="DOLGOZO" Relationship="Self.FK_CEG_ID" FromRole="CEG" ToRole="DOLGOZO" />
+        </EntityType>
+        <EntityType Name="DOLGOZO">
+          <Key>
+            <PropertyRef Name="DOLGOZO_ID" />
+          </Key>
+          <Property Name="DOLGOZO_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CEG_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="NEV" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="NEM" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="SZULETESI_HELY" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="SZULETESI_EV" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="IGAZOLVANY_SZAM" Type="Decimal" Precision="10" Scale="0" />
+          <NavigationProperty Name="CEG" Relationship="Self.FK_CEG_ID" FromRole="DOLGOZO" ToRole="CEG" />
+          <NavigationProperty Name="VASARLAS" Relationship="Self.FK_DOLGOZO" FromRole="DOLGOZO" ToRole="VASARLAS" />
+        </EntityType>
+        <EntityType Name="VASARLAS">
+          <Key>
+            <PropertyRef Name="VASARLAS_ID" />
+          </Key>
+          <Property Name="VASARLAS_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="DOLGOZO_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="BERLET_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="BERLET_MEGNEVEZES" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="IGAZOLVANY_SZAM" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="ERVENYESSEG_KEZDETE" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="BERLET" Relationship="Self.FK_BERLET" FromRole="VASARLAS" ToRole="BERLET" />
+          <NavigationProperty Name="DOLGOZO" Relationship="Self.FK_DOLGOZO" FromRole="VASARLAS" ToRole="DOLGOZO" />
+        </EntityType>
+        <Association Name="FK_BERLET">
+          <End Role="BERLET" Type="Self.BERLET" Multiplicity="1" />
+          <End Role="VASARLAS" Type="Self.VASARLAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BERLET">
+              <PropertyRef Name="BERLET_ID" />
+            </Principal>
+            <Dependent Role="VASARLAS">
+              <PropertyRef Name="BERLET_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CEG_ID">
+          <End Role="CEG" Type="Self.CEG" Multiplicity="1" />
+          <End Role="DOLGOZO" Type="Self.DOLGOZO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CEG">
+              <PropertyRef Name="CEG_ID" />
+            </Principal>
+            <Dependent Role="DOLGOZO">
+              <PropertyRef Name="CEG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOLGOZO">
+          <End Role="DOLGOZO" Type="Self.DOLGOZO" Multiplicity="1" />
+          <End Role="VASARLAS" Type="Self.VASARLAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOLGOZO">
+              <PropertyRef Name="DOLGOZO_ID" />
+            </Principal>
+            <Dependent Role="VASARLAS">
+              <PropertyRef Name="DOLGOZO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PassRegisterDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BERLET" EntityType="Self.BERLET" />
+          <EntitySet Name="CEG" EntityType="Self.CEG" />
+          <EntitySet Name="DOLGOZO" EntityType="Self.DOLGOZO" />
+          <EntitySet Name="VASARLAS" EntityType="Self.VASARLAS" />
+          <AssociationSet Name="FK_BERLET" Association="Self.FK_BERLET">
+            <End Role="BERLET" EntitySet="BERLET" />
+            <End Role="VASARLAS" EntitySet="VASARLAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CEG_ID" Association="Self.FK_CEG_ID">
+            <End Role="CEG" EntitySet="CEG" />
+            <End Role="DOLGOZO" EntitySet="DOLGOZO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOLGOZO" Association="Self.FK_DOLGOZO">
+            <End Role="DOLGOZO" EntitySet="DOLGOZO" />
+            <End Role="VASARLAS" EntitySet="VASARLAS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PassRegisterDatabaseModelStoreContainer" CdmEntityContainer="PassRegisterDatabaseEntities">
+          <EntitySetMapping Name="BERLET">
+            <EntityTypeMapping TypeName="PassRegisterDatabaseModel.BERLET">
+              <MappingFragment StoreEntitySet="BERLET">
+                <ScalarProperty Name="BERLET_ID" ColumnName="BERLET_ID" />
+                <ScalarProperty Name="MEGNEVEZES" ColumnName="MEGNEVEZES" />
+                <ScalarProperty Name="AR" ColumnName="AR" />
+                <ScalarProperty Name="ERVENYESSEG_IDO" ColumnName="ERVENYESSEG_IDO" />
+                <ScalarProperty Name="KEDVEZMENY_TIPUS" ColumnName="KEDVEZMENY_TIPUS" />
+                <ScalarProperty Name="BERLET_FORMATUM" ColumnName="BERLET_FORMATUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CEG">
+            <EntityTypeMapping TypeName="PassRegisterDatabaseModel.CEG">
+              <MappingFragment StoreEntitySet="CEG">
+                <ScalarProperty Name="CEG_ID" ColumnName="CEG_ID" />
+                <ScalarProperty Name="CEGNEV" ColumnName="CEGNEV" />
+                <ScalarProperty Name="SZEKHELY" ColumnName="SZEKHELY" />
+                <ScalarProperty Name="ADOSZAM" ColumnName="ADOSZAM" />
+                <ScalarProperty Name="ALAPITAS_DATUMA" ColumnName="ALAPITAS_DATUMA" />
+                <ScalarProperty Name="JEGYZETT_TOKE" ColumnName="JEGYZETT_TOKE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOLGOZO">
+            <EntityTypeMapping TypeName="PassRegisterDatabaseModel.DOLGOZO">
+              <MappingFragment StoreEntitySet="DOLGOZO">
+                <ScalarProperty Name="DOLGOZO_ID" ColumnName="DOLGOZO_ID" />
+                <ScalarProperty Name="CEG_ID" ColumnName="CEG_ID" />
+                <ScalarProperty Name="NEV" ColumnName="NEV" />
+                <ScalarProperty Name="NEM" ColumnName="NEM" />
+                <ScalarProperty Name="SZULETESI_HELY" ColumnName="SZULETESI_HELY" />
+                <ScalarProperty Name="SZULETESI_EV" ColumnName="SZULETESI_EV" />
+                <ScalarProperty Name="IGAZOLVANY_SZAM" ColumnName="IGAZOLVANY_SZAM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VASARLAS">
+            <EntityTypeMapping TypeName="PassRegisterDatabaseModel.VASARLAS">
+              <MappingFragment StoreEntitySet="VASARLAS">
+                <ScalarProperty Name="VASARLAS_ID" ColumnName="VASARLAS_ID" />
+                <ScalarProperty Name="DOLGOZO_ID" ColumnName="DOLGOZO_ID" />
+                <ScalarProperty Name="BERLET_ID" ColumnName="BERLET_ID" />
+                <ScalarProperty Name="BERLET_MEGNEVEZES" ColumnName="BERLET_MEGNEVEZES" />
+                <ScalarProperty Name="IGAZOLVANY_SZAM" ColumnName="IGAZOLVANY_SZAM" />
+                <ScalarProperty Name="ERVENYESSEG_KEZDETE" ColumnName="ERVENYESSEG_KEZDETE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
