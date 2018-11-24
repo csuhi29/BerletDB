@@ -36,6 +36,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>..\..\..\..\..\Desktop\oenik.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -71,7 +73,7 @@
     <Compile Include="CEG.cs">
       <DependentUpon>PassRegisterModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="DOLGOZO.cs">
       <DependentUpon>PassRegisterModel.tt</DependentUpon>
     </Compile>
@@ -105,6 +107,7 @@
     <None Include="PassRegisterModel.edmx.diagram">
       <DependentUpon>PassRegisterModel.edmx</DependentUpon>
     </None>
+    <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
