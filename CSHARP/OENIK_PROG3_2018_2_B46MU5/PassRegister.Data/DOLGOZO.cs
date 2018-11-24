@@ -28,7 +28,7 @@ namespace PassRegister.Data
         public Nullable<decimal> SZULETESI_EV { get; set; }
         public Nullable<decimal> IGAZOLVANY_SZAM { get; set; }
     
-        public virtual CEG CEG { get; set; }
+        public virtual ICollection<CEG> CEG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VASARLAS> VASARLAS { get; set; }
     }
