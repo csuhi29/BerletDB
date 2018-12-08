@@ -6,177 +6,186 @@ namespace PassRegister.Logic
 {
     using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using PassRegister.Data;
     using PassRegister.Repository;
 
+    /// <summary>
+    /// This class implements all methods of the ILogic interface.
+    /// </summary>
     public class Logic : ILogic
     {
-        private DolgozoRepository dolgozoRepo;
-        private BerletRepository berletRepo;
-        private CegRepository cegRepo;
-        private VasarlasRepository vasarlasRepo;
+        private readonly IRepository<DOLGOZO> dolgozo;
+        private readonly IRepository<BERLET> berlet;
+        private readonly IRepository<CEG> ceg;
+        private readonly IRepository<VASARLAS> vasarlas;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Logic"/> class.
+        /// </summary>
         public Logic()
         {
-            this.dolgozoRepo = new DolgozoRepository();
-            this.berletRepo = new BerletRepository();
-            this.cegRepo = new CegRepository();
-            this.vasarlasRepo = new VasarlasRepository();
+            this.ceg = new Repository<CEG>();
+            this.dolgozo = new Repository<DOLGOZO>();
+            this.vasarlas = new Repository<VASARLAS>();
+            this.berlet = new Repository<BERLET>();
         }
 
-        public void CreateBerlet()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Logic"/> class.
+        /// Constructor for Logic for Mocking.
+        /// </summary>
+        /// <param name="d">DolgozoInterface for Mock..</param>
+        /// <param name="b">BerletInterface for Mock.</param>
+        /// <param name="c">CegInterface for Mock.</param>
+        /// <param name="v">VasarlasInterface for Mock.</param>
+        public Logic(IRepository<DOLGOZO> d, IRepository<BERLET> b, IRepository<CEG> c, IRepository<VASARLAS> v)
         {
-            Console.WriteLine("[BERLET_ID, MEGNEVEZES, AR, ERVENYESSEGI_IDO, KEDVEZMENY_TIPUS, BERLET_FORMATUM]");
-            Console.WriteLine("Ebben a sorrendben kérem írja be az adatokat, minden adat után 'enter' leütése szükséges.");
-            int id = int.Parse(Console.ReadLine());
-            string megn = Console.ReadLine();
-            int ar = int.Parse(Console.ReadLine());
-            int erv = int.Parse(Console.ReadLine());
-            string tipus = Console.ReadLine();
-            string formatum = Console.ReadLine();
-            this.berletRepo.Add(id, megn, ar, erv, tipus, formatum);
+            this.dolgozo = d ?? throw new ArgumentNullException(nameof(d));
+            this.berlet = b ?? throw new ArgumentNullException(nameof(b));
+            this.ceg = c ?? throw new ArgumentNullException(nameof(c));
+            this.vasarlas = v ?? throw new ArgumentNullException(nameof(v));
         }
 
-        public void CreateCeg()
+        /// <inheritdoc/>
+        public void CreateBerlet(BERLET b)
         {
-            Console.WriteLine("[ceg_id, cegnev, szekhely, adoszam, alapitas_datuma, jegyzett_toke]");
-            Console.WriteLine("Ebben a sorrendben kérem írja be az adatokat, minden adat után 'enter' leütése szükséges.");
-            int id = int.Parse(Console.ReadLine());
-            string nev = Console.ReadLine();
-            string szek = Console.ReadLine();
-            int ado = int.Parse(Console.ReadLine());
-            DateTime alap = DateTime.Parse(Console.ReadLine());
-            int toke = int.Parse(Console.ReadLine());
-            this.cegRepo.Add(id, nev, szek, ado, alap, toke);
+            this.berlet.Add(b);
         }
 
-        public void CreateDolgozo()
+        /// <inheritdoc/>
+        public void CreateCeg(CEG c)
         {
-            Console.WriteLine("dolgozo_id, ceg_id, nev, nem, szuletesi_hely, szuletesi_ev, igazolvany_szam");
-            Console.WriteLine("Ebben a sorrendben kérem írja be az adatokat, minden adat után 'enter' leütése szükséges.");
-            int id = int.Parse(Console.ReadLine());
-            int did = int.Parse(Console.ReadLine());
-            string nev = Console.ReadLine();
-            string nem = Console.ReadLine();
-            string hely = Console.ReadLine();
-            int szul = int.Parse(Console.ReadLine());
-            int ig = int.Parse(Console.ReadLine());
-            this.dolgozoRepo.Add(id, did, nev, nem, hely, szul, ig);
+            this.ceg.Add(c);
         }
 
-        public void CreateVasarlas()
+        /// <inheritdoc/>
+        public void CreateVasarlas(VASARLAS v)
         {
-            Console.WriteLine("vasarlas_id, dolgozo_id, berlet_id, berlet_megnevezes, igazolvany_szam, ervenyesseg_kezdete");
-            Console.WriteLine("Ebben a sorrendben kérem írja be az adatokat, minden adat után 'enter' leütése szükséges.");
-            int id = int.Parse(Console.ReadLine());
-            int id2 = int.Parse(Console.ReadLine());
-            int id3 = int.Parse(Console.ReadLine());
-            string nev = Console.ReadLine();
-            int ig = int.Parse(Console.ReadLine());
-            DateTime dt = DateTime.Parse(Console.ReadLine());
-            this.vasarlasRepo.Add(id, id2, id3, nev, ig, dt);
+            this.vasarlas.Add(v);
         }
 
-        public void DeleteBerlet()
+        /// <inheritdoc/>
+        public void DeleteBerlet(BERLET b)
         {
-            Console.WriteLine("Törlendő ID-je: ");
-            int id = int.Parse(Console.ReadLine());
-            this.berletRepo.Delete(id);
+            this.berlet.Delete(b);
         }
 
-        public void DeleteCeg()
+        /// <inheritdoc/>
+        public void DeleteCeg(CEG c)
         {
-            Console.WriteLine("Törlendő ID-je: ");
-            int id = int.Parse(Console.ReadLine());
-            this.cegRepo.Delete(id);
+            this.ceg.Delete(c);
         }
 
-        public void DeleteDolgozo()
+        /// <inheritdoc/>
+        public void DeleteDolgozo(DOLGOZO d)
         {
-            Console.WriteLine("Törlendő ID-je: ");
-            int id = int.Parse(Console.ReadLine());
-            this.dolgozoRepo.Delete(id);
+            this.dolgozo.Delete(d);
         }
 
-        public void DeleteVasarlas()
+        /// <inheritdoc/>
+        public void DeleteVasarlas(VASARLAS v)
         {
-            Console.WriteLine("Törlendő ID-je: ");
-            int id = int.Parse(Console.ReadLine());
-            this.vasarlasRepo.Delete(id);
+            this.vasarlas.Delete(v);
         }
 
-        public void ReadBerlet()
+        /// <inheritdoc/>
+        public List<BERLET> ReadBerlet()
         {
-            this.berletRepo.Read();
+            return this.berlet.Read();
         }
 
-        public void ReadCeg()
+        /// <inheritdoc/>
+        public List<CEG> ReadCeg()
         {
-            this.cegRepo.Read();
+            return this.ceg.Read();
         }
 
-        public void ReadDolgozo()
+        /// <inheritdoc/>
+        public List<DOLGOZO> ReadDolgozo()
         {
-            this.dolgozoRepo.Read();
+            return this.dolgozo.Read();
         }
 
-        public void ReadVasarlas()
+        /// <inheritdoc/>
+        public List<VASARLAS> ReadVasarlas()
         {
-            this.vasarlasRepo.Read();
+            return this.vasarlas.Read();
         }
 
-        public void UpdateBerlet()
+        /// <inheritdoc/>
+        public void UpdateBerlet(BERLET berlet)
         {
-            Console.WriteLine("Adja meg a módosítani kívánt tétel 'ID'-jét:");
-            int id = int.Parse(Console.ReadLine());
-            Console.WriteLine("Adja meg melyik tulajdonságot kívánja módosítani: ");
-            string prop = Console.ReadLine();
-            this.berletRepo.Modify(id, prop);
+            this.berlet.Modify(berlet.BERLET_ID, berlet);
         }
 
-        public void UpdateCeg()
+        /// <inheritdoc/>
+        public void UpdateCeg(CEG ceg)
         {
-            Console.WriteLine("Adja meg a módosítani kívánt tétel 'ID'-jét:");
-            int id = int.Parse(Console.ReadLine());
-            Console.WriteLine("Adja meg melyik tulajdonságot kívánja módosítani: ");
-            string prop = Console.ReadLine();
-            this.cegRepo.Modify(id, prop);
+            this.ceg.Modify(ceg.CEG_ID, ceg);
         }
 
-        public void UpdateDolgozo()
+        /// <inheritdoc/>
+        public void UpdateDolgozo(DOLGOZO dolgozo)
         {
-            Console.WriteLine("Adja meg a módosítani kívánt tétel 'ID'-jét:");
-            int id = int.Parse(Console.ReadLine());
-            Console.WriteLine("Adja meg melyik tulajdonságot kívánja módosítani: ");
-            string prop = Console.ReadLine();
-            this.dolgozoRepo.Modify(id, prop);
+            this.dolgozo.Modify(dolgozo.DOLGOZO_ID, dolgozo);
         }
 
-        public void UpdateVasarlas()
+        /// <inheritdoc/>
+        public void UpdateVasarlas(VASARLAS vasarlas)
         {
-            Console.WriteLine("Adja meg a módosítani kívánt tétel 'ID'-jét:");
-            int id = int.Parse(Console.ReadLine());
-            Console.WriteLine("Adja meg melyik tulajdonságot kívánja módosítani: ");
-            string prop = Console.ReadLine();
-            this.vasarlasRepo.Modify(id, prop);
+            this.vasarlas.Modify(vasarlas.VASARLAS_ID, vasarlas);
         }
 
-        public void GivenName()
+        /// <inheritdoc/>
+        public void GivenName(string nev)
         {
-            throw new NotImplementedException();
+            var q = from a in this.dolgozo.Read()
+                    from b in this.vasarlas.Read()
+                    where a.DOLGOZO_ID == b.DOLGOZO_ID && b.BERLET_MEGNEVEZES == nev
+                    select new { Berlet_neve = b.BERLET_MEGNEVEZES, Dolgozo_neve = a.NEV };
+
+            foreach (var item in q)
+            {
+                Console.WriteLine(item);
+            }
         }
 
+        /// <inheritdoc/>
         public void NoSale()
         {
-            throw new NotImplementedException();
+            var q = from a in this.dolgozo.Read()
+                    from b in this.vasarlas.Read()
+                    from c in this.berlet.Read()
+                    where a.DOLGOZO_ID == b.DOLGOZO_ID && b.BERLET_ID == c.BERLET_ID && c.KEDVEZMENY_TIPUS == "nincs"
+                    select new { Dolgozo_Neve = a.NEV, Szuletesi_Ev = a.SZULETESI_EV, Berlet_Megnevezes = b.BERLET_MEGNEVEZES };
+
+            foreach (var item in q)
+            {
+                Console.WriteLine(item);
+            }
         }
 
+        /// <inheritdoc/>
         public void AtLeast2()
         {
-            throw new NotImplementedException();
+            var q = from a in this.vasarlas.Read()
+                    group a by a.BERLET_MEGNEVEZES into g
+                    where g.Count() >= 2
+                    select new { Berlet_Megnevezes = g.Key, Eladott_darab = g.Count() };
+
+            foreach (var item in q)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        /// <inheritdoc/>
+        public void CreateDolgozo(DOLGOZO d)
+        {
+            this.dolgozo.Add(d);
         }
     }
 }
