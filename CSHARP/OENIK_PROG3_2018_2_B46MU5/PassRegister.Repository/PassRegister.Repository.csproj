@@ -20,7 +20,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>..\..\..\..\..\Desktop\oenik.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\oenik.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\PassRegister.Repository.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -48,19 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CegRepository.cs" />
-    <Compile Include="DolgozoRepository.cs" />
-    <Compile Include="IBerletRepository.cs" />
-    <Compile Include="ICegRepository.cs" />
-    <Compile Include="IDolgozoRepository.cs" />
     <Compile Include="IRepository.cs" />
-    <Compile Include="IVasarlasRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BerletRepository.cs" />
-    <Compile Include="VasarlasRepository.cs" />
+    <Compile Include="Repository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
     <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>
