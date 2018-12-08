@@ -10,6 +10,9 @@ namespace PassRegister.Data
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Data class.
+    /// </summary>
     public class Data
     {
     }

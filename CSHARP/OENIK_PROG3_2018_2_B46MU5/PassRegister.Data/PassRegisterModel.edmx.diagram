@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="28870f7f55854c53a25c1f5d0df1332f" Name="Diagram1">
+      <Diagram DiagramId="28870f7f55854c53a25c1f5d0df1332f" Name="Diagram1" ZoomLevel="55">
         <EntityTypeShape EntityType="PassRegisterDatabaseModel.BERLET" Width="1.5" PointX="0.5" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PassRegisterDatabaseModel.CEG" Width="1.5" PointX="7.125" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PassRegisterDatabaseModel.DOLGOZO" Width="1.5" PointX="5.125" PointY="0.5" IsExpanded="true" />

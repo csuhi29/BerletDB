@@ -113,7 +113,7 @@
           <Key>
             <PropertyRef Name="BERLET_ID" />
           </Key>
-          <Property Name="BERLET_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="BERLET_ID" Type="Int32" Nullable="false" />
           <Property Name="MEGNEVEZES" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="AR" Type="Decimal" Precision="10" Scale="0" />
           <Property Name="ERVENYESSEG_IDO" Type="Decimal" Precision="10" Scale="0" />
@@ -125,7 +125,7 @@
           <Key>
             <PropertyRef Name="CEG_ID" />
           </Key>
-          <Property Name="CEG_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CEG_ID" Type="Int32" Nullable="false" />
           <Property Name="CEGNEV" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="SZEKHELY" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="ADOSZAM" Type="Decimal" Precision="10" Scale="0" />
@@ -137,8 +137,8 @@
           <Key>
             <PropertyRef Name="DOLGOZO_ID" />
           </Key>
-          <Property Name="DOLGOZO_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
-          <Property Name="CEG_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="DOLGOZO_ID" Type="Int32" Nullable="false" />
+          <Property Name="CEG_ID" Type="Int32" Nullable="false" />
           <Property Name="NEV" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="NEM" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="SZULETESI_HELY" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
@@ -151,9 +151,9 @@
           <Key>
             <PropertyRef Name="VASARLAS_ID" />
           </Key>
-          <Property Name="VASARLAS_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
-          <Property Name="DOLGOZO_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
-          <Property Name="BERLET_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="VASARLAS_ID" Type="Int32" Nullable="false" />
+          <Property Name="DOLGOZO_ID" Type="Int32" Nullable="false" />
+          <Property Name="BERLET_ID" Type="Int32" Nullable="false" />
           <Property Name="BERLET_MEGNEVEZES" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="IGAZOLVANY_SZAM" Type="Decimal" Precision="10" Scale="0" />
           <Property Name="ERVENYESSEG_KEZDETE" Type="DateTime" Precision="0" />
