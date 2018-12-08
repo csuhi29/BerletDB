@@ -21,7 +21,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>..\..\..\..\..\Desktop\oenik.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\oenik.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\PassRegister.Program.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -64,6 +64,10 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PassRegister.Data\PassRegister.Data.csproj">
+      <Project>{3a01aaa5-33a0-4efd-975b-aa4d43f7132b}</Project>
+      <Name>PassRegister.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PassRegister.Logic\PassRegister.Logic.csproj">
       <Project>{2d2df2bc-cf1b-485a-b37f-151f662f4829}</Project>
       <Name>PassRegister.Logic</Name>
