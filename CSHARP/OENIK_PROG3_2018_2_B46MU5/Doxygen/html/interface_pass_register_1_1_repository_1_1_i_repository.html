@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Prog3FF: PassRegister.Repository.IRepository&lt; T &gt; Interface Template Reference</title>
+<title>Prog3FF: PassRegister.Repository.IRepository&lt; TEntity &gt; Interface Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,29 +89,174 @@ $(document).ready(function(){initNavTree('interface_pass_register_1_1_repository
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="interface_pass_register_1_1_repository_1_1_i_repository-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">PassRegister.Repository.IRepository&lt; T &gt; Interface Template Reference</div>  </div>
+<div class="title">PassRegister.Repository.IRepository&lt; TEntity &gt; Interface Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This is the Main Interface that is given to other Interfaces.  
+ <a href="interface_pass_register_1_1_repository_1_1_i_repository.html#details">More...</a></p>
+<div class="dynheader">
+Inheritance diagram for PassRegister.Repository.IRepository&lt; TEntity &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="interface_pass_register_1_1_repository_1_1_i_repository.png" usemap="#PassRegister.Repository.IRepository_3C_20TEntity_20_3E_map" alt=""/>
+  <map id="PassRegister.Repository.IRepository_3C_20TEntity_20_3E_map" name="PassRegister.Repository.IRepository_3C_20TEntity_20_3E_map">
+<area href="class_pass_register_1_1_repository_1_1_repository.html" title="Repository class that implements IRepository interface. " alt="PassRegister.Repository.Repository&lt; TEntity &gt;" shape="rect" coords="0,56,278,80"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4d5127ad68795b3998fb7f1945ac86b2"><td class="memItemLeft" align="right" valign="top"><a id="a4d5127ad68795b3998fb7f1945ac86b2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Create</b> (T entity)</td></tr>
-<tr class="separator:a4d5127ad68795b3998fb7f1945ac86b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cafee816f2e216325cef47f81dd3684"><td class="memItemLeft" align="right" valign="top"><a id="a1cafee816f2e216325cef47f81dd3684"></a>
-List&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Read</b> ()</td></tr>
-<tr class="separator:a1cafee816f2e216325cef47f81dd3684"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2917eb4ca1a0eb0f9bbc5072d877eb8"><td class="memItemLeft" align="right" valign="top"><a id="ab2917eb4ca1a0eb0f9bbc5072d877eb8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Update</b> (T entity)</td></tr>
-<tr class="separator:ab2917eb4ca1a0eb0f9bbc5072d877eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd1f3ea33319ffd940cc7f729292e889"><td class="memItemLeft" align="right" valign="top"><a id="acd1f3ea33319ffd940cc7f729292e889"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Delete</b> (T entity)</td></tr>
-<tr class="separator:acd1f3ea33319ffd940cc7f729292e889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46b186b40d167978a9166748d7e5b1f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_pass_register_1_1_repository_1_1_i_repository.html#a46b186b40d167978a9166748d7e5b1f7">Delete</a> (TEntity entity)</td></tr>
+<tr class="memdesc:a46b186b40d167978a9166748d7e5b1f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method will Delete the entity.  <a href="#a46b186b40d167978a9166748d7e5b1f7">More...</a><br /></td></tr>
+<tr class="separator:a46b186b40d167978a9166748d7e5b1f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac867abb661832fce929aaae97a05cb10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_pass_register_1_1_repository_1_1_i_repository.html#ac867abb661832fce929aaae97a05cb10">Modify</a> (int id, TEntity property)</td></tr>
+<tr class="memdesc:ac867abb661832fce929aaae97a05cb10"><td class="mdescLeft">&#160;</td><td class="mdescRight">It will modify an item form a table.  <a href="#ac867abb661832fce929aaae97a05cb10">More...</a><br /></td></tr>
+<tr class="separator:ac867abb661832fce929aaae97a05cb10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dcc16788cf33b88b967ef86938a0248"><td class="memItemLeft" align="right" valign="top">List&lt; TEntity &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_pass_register_1_1_repository_1_1_i_repository.html#a6dcc16788cf33b88b967ef86938a0248">Read</a> ()</td></tr>
+<tr class="memdesc:a6dcc16788cf33b88b967ef86938a0248"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the elements to a List where TEntity = the Table type.  <a href="#a6dcc16788cf33b88b967ef86938a0248">More...</a><br /></td></tr>
+<tr class="separator:a6dcc16788cf33b88b967ef86938a0248"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41d2d288cd446670eed70a96c5a9aa48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_pass_register_1_1_repository_1_1_i_repository.html#a41d2d288cd446670eed70a96c5a9aa48">Add</a> (TEntity entity)</td></tr>
+<tr class="memdesc:a41d2d288cd446670eed70a96c5a9aa48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adda new Entity to the database.  <a href="#a41d2d288cd446670eed70a96c5a9aa48">More...</a><br /></td></tr>
+<tr class="separator:a41d2d288cd446670eed70a96c5a9aa48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_i_repository_8cs_source.html#l00012">12</a> of file <a class="el" href="_i_repository_8cs_source.html">IRepository.cs</a>.</p>
-</div><hr/>The documentation for this interface was generated from the following file:<ul>
+<div class="textblock"><p>This is the Main Interface that is given to other Interfaces. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TEntity</td><td>This is a reference of the class that will be used.</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>TEntity</em></td><td>&#160;:</td><td valign="top"><em>class</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+<p class="definition">Definition at line <a class="el" href="_i_repository_8cs_source.html#l00017">17</a> of file <a class="el" href="_i_repository_8cs_source.html">IRepository.cs</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a41d2d288cd446670eed70a96c5a9aa48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41d2d288cd446670eed70a96c5a9aa48">&#9670;&nbsp;</a></span>Add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="interface_pass_register_1_1_repository_1_1_i_repository.html">PassRegister.Repository.IRepository</a>&lt; TEntity &gt;.Add </td>
+          <td>(</td>
+          <td class="paramtype">TEntity&#160;</td>
+          <td class="paramname"><em>entity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adda new Entity to the database. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity</td><td>Entity of the given type</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_pass_register_1_1_repository_1_1_repository.html#a21f407add2ee819d450493b194258eac">PassRegister.Repository.Repository&lt; TEntity &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a46b186b40d167978a9166748d7e5b1f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46b186b40d167978a9166748d7e5b1f7">&#9670;&nbsp;</a></span>Delete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="interface_pass_register_1_1_repository_1_1_i_repository.html">PassRegister.Repository.IRepository</a>&lt; TEntity &gt;.Delete </td>
+          <td>(</td>
+          <td class="paramtype">TEntity&#160;</td>
+          <td class="paramname"><em>entity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This method will Delete the entity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity</td><td>Entity of the given type.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_pass_register_1_1_repository_1_1_repository.html#aac0548c31eb6bbc2983562975e87390c">PassRegister.Repository.Repository&lt; TEntity &gt;</a>.</p>
+
+</div>
+</div>
+<a id="ac867abb661832fce929aaae97a05cb10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac867abb661832fce929aaae97a05cb10">&#9670;&nbsp;</a></span>Modify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="interface_pass_register_1_1_repository_1_1_i_repository.html">PassRegister.Repository.IRepository</a>&lt; TEntity &gt;.Modify </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TEntity&#160;</td>
+          <td class="paramname"><em>property</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>It will modify an item form a table. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The ID of the element we want to Modify.</td></tr>
+    <tr><td class="paramname">property</td><td>The name of the parameter of the ID given element.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_pass_register_1_1_repository_1_1_repository.html#a6c1f77f2b334cae12ada7718d6c59997">PassRegister.Repository.Repository&lt; TEntity &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a6dcc16788cf33b88b967ef86938a0248"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dcc16788cf33b88b967ef86938a0248">&#9670;&nbsp;</a></span>Read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;TEntity&gt; <a class="el" href="interface_pass_register_1_1_repository_1_1_i_repository.html">PassRegister.Repository.IRepository</a>&lt; TEntity &gt;.Read </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the elements to a List where TEntity = the Table type. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns table elements as a List.</dd></dl>
+
+<p>Implemented in <a class="el" href="class_pass_register_1_1_repository_1_1_repository.html#a0776b70ef2a7c15973fb9636c7824d52">PassRegister.Repository.Repository&lt; TEntity &gt;</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this interface was generated from the following file:<ul>
 <li>C:/Users/Csuhi/Documents/oenik_prog3_2018_2_b46mu5/CSHARP/OENIK_PROG3_2018_2_B46MU5/PassRegister.Repository/<a class="el" href="_i_repository_8cs_source.html">IRepository.cs</a></li>
 </ul>
 </div><!-- contents -->

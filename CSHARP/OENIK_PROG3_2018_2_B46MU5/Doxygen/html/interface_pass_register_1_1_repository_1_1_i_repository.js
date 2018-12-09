@@ -1,7 +1,7 @@
 var interface_pass_register_1_1_repository_1_1_i_repository =
 [
-    [ "Create", "interface_pass_register_1_1_repository_1_1_i_repository.html#a4d5127ad68795b3998fb7f1945ac86b2", null ],
-    [ "Delete", "interface_pass_register_1_1_repository_1_1_i_repository.html#acd1f3ea33319ffd940cc7f729292e889", null ],
-    [ "Read", "interface_pass_register_1_1_repository_1_1_i_repository.html#a1cafee816f2e216325cef47f81dd3684", null ],
-    [ "Update", "interface_pass_register_1_1_repository_1_1_i_repository.html#ab2917eb4ca1a0eb0f9bbc5072d877eb8", null ]
+    [ "Add", "interface_pass_register_1_1_repository_1_1_i_repository.html#a41d2d288cd446670eed70a96c5a9aa48", null ],
+    [ "Delete", "interface_pass_register_1_1_repository_1_1_i_repository.html#a46b186b40d167978a9166748d7e5b1f7", null ],
+    [ "Modify", "interface_pass_register_1_1_repository_1_1_i_repository.html#ac867abb661832fce929aaae97a05cb10", null ],
+    [ "Read", "interface_pass_register_1_1_repository_1_1_i_repository.html#a6dcc16788cf33b88b967ef86938a0248", null ]
 ];
