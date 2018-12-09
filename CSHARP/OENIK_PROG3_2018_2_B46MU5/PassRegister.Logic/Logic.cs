@@ -52,7 +52,7 @@ namespace PassRegister.Logic
         }
 
         /// <summary>
-        /// 
+        /// Gets a new Berlet with a given name and random parameters.
         /// </summary>
         public async void WebRequest()
         {
@@ -103,24 +103,28 @@ namespace PassRegister.Logic
         /// <inheritdoc/>
         public void DeleteBerlet(BERLET b)
         {
+            b = this.berlet.Read().FirstOrDefault(u => u.BERLET_ID == b.BERLET_ID);
             this.berlet.Delete(b);
         }
 
         /// <inheritdoc/>
         public void DeleteCeg(CEG c)
         {
+            c = this.ceg.Read().FirstOrDefault(u => u.CEG_ID == c.CEG_ID);
             this.ceg.Delete(c);
         }
 
         /// <inheritdoc/>
         public void DeleteDolgozo(DOLGOZO d)
         {
+            d = this.dolgozo.Read().FirstOrDefault(u => u.DOLGOZO_ID == d.DOLGOZO_ID);
             this.dolgozo.Delete(d);
         }
 
         /// <inheritdoc/>
         public void DeleteVasarlas(VASARLAS v)
         {
+            v = this.vasarlas.Read().FirstOrDefault(u => u.VASARLAS_ID == v.VASARLAS_ID);
             this.vasarlas.Delete(v);
         }
 
