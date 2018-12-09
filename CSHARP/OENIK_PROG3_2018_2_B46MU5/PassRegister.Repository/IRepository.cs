@@ -11,7 +11,7 @@ namespace PassRegister.Repository
     using System.Threading.Tasks;
 
     /// <summary>
-    /// This is the Main Interface that is given to other Interfaces.
+    /// This is the Main Interface of the Repository.
     /// </summary>
     /// <typeparam name="TEntity">This is a reference of the class that will be used.</typeparam>
     public interface IRepository<TEntity>
@@ -24,7 +24,7 @@ namespace PassRegister.Repository
         void Delete(TEntity entity);
 
         /// <summary>
-        /// It will modify an item form a table.
+        /// It will modify an item from a table.
         /// </summary>
         /// <param name="id"> The ID of the element we want to Modify.</param>
         /// <param name="property">The name of the parameter of the ID given element.</param>
