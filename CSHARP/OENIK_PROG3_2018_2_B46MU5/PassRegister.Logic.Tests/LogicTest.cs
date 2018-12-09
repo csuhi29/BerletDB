@@ -367,10 +367,29 @@ namespace PassRegister.Logic.Tests
         {
             var q = from a in this.LogicTester.ReadDolgozo()
                     from b in this.LogicTester.ReadVasarlas()
-                    where a.DOLGOZO_ID == b.DOLGOZO_ID && b.BERLET_MEGNEVEZES == nev
+                    where a.DOLGOZO_ID == b.DOLGOZO_ID && b.BERLET_MEGNEVEZES == "proba2"
                     select new { Berlet_neve = b.BERLET_MEGNEVEZES, Dolgozo_neve = a.NEV };
 
-            Assert.That(this.LogicTester.ReadVasarlas().Join(x => x.))
+            Assert.That(this.LogicTester.ReadDolgozo().Join(this.LogicTester.ReadVasarlas(), x => x.DOLGOZO_ID, y => y.DOLGOZO_ID, (x, y) => new { Berlet_neve = y.BERLET_MEGNEVEZES, Dolgozo_neve = x.NEV }).Where(y => y.Berlet_neve == "proba2"), Is.EqualTo(q));
+            this.DolgozoMoq.Verify(x => x.Read(), Times.Exactly(2));
+            this.VasarlasMoq.Verify(x => x.Read(), Times.Exactly(4));
+        }
+
+        /// <summary>
+        /// Thismethod tests the NoSale nonCRUD method.
+        /// </summary>
+        [Test]
+        public void TestNoSale()
+        {
+            var q = from a in this.LogicTester.ReadDolgozo()
+                    from b in this.LogicTester.ReadVasarlas()
+                    from c in this.LogicTester.ReadBerlet()
+                    where a.DOLGOZO_ID == b.DOLGOZO_ID && b.BERLET_ID == c.BERLET_ID && c.KEDVEZMENY_TIPUS == "nincs"
+                    select new { Dolgozo_Neve = a.NEV, Szuletesi_Ev = a.SZULETESI_EV, Berlet_Megnevezes = b.BERLET_MEGNEVEZES };
+
+            this.DolgozoMoq.Verify(x => x.Read(), Times.Once);
+            this.VasarlasMoq.Verify(x => x.Read(), Times.Never);
+            this.BerletMoq.Verify(x => x.Read(), Times.Never);
         }
     }
 }

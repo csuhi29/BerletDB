@@ -7,8 +7,10 @@ namespace PassRegister.Logic
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Web.Script.Serialization;
     using PassRegister.Data;
     using PassRegister.Repository;
 
@@ -47,6 +49,37 @@ namespace PassRegister.Logic
             this.berlet = b ?? throw new ArgumentNullException(nameof(b));
             this.ceg = c ?? throw new ArgumentNullException(nameof(c));
             this.vasarlas = v ?? throw new ArgumentNullException(nameof(v));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async void WebRequest()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("HTTP kérés indítva ...");
+                HttpClient client = new HttpClient();
+                Console.Write("Adja meg milyen megnevezésű bérletet kíván felvenni: ");
+                string megnevezes = Console.ReadLine();
+                string response = await client.GetStringAsync("http://localhost:8080/PassRegister.JavaWeb/PassRegisterServlet?berlet=" + megnevezes);
+                BERLET b = new JavaScriptSerializer().Deserialize<BERLET>(response);
+                Console.WriteLine("Új rendelés: ");
+                Console.WriteLine("BERLET_ID   MEGNEVEZES   AR   ERVENYESSEGI_IDO   KEDVEZMENY_TIPUS   BERLET_FORMATUM");
+                Console.WriteLine(b.BERLET_ID + " " + b.MEGNEVEZES + " " + b.AR + " " + b.ERVENYESSEG_IDO + " " + b.KEDVEZMENY_TIPUS + " " + b.BERLET_FORMATUM);
+                Console.WriteLine("Elmenti? [Y / N]");
+                ConsoleKeyInfo k = Console.ReadKey();
+                if (k.Key == ConsoleKey.Y)
+                {
+                    this.berlet.Add(b);
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Nem sikerült elindítani a Servletet. Kérem próbálja újbol.");
+            }
         }
 
         /// <inheritdoc/>
