@@ -233,9 +233,7 @@ namespace PassRegister.Program
                         {
                             Console.WriteLine("Törlendő ID-je: ");
                             berlet.BERLET_ID = int.Parse(Console.ReadLine());
-                                                        
-                                l.DeleteBerlet(berlet);
-                            
+                            l.DeleteBerlet(berlet);
 
                             ex = false;
                         }
@@ -396,10 +394,7 @@ namespace PassRegister.Program
                         {
                             Console.WriteLine("Törlendő ID-je: ");
                             dolgozo.DOLGOZO_ID = int.Parse(Console.ReadLine());
-                            if (l.ReadDolgozo().Contains(dolgozo))
-                            {
-                                l.DeleteDolgozo(dolgozo);
-                            }
+                            l.DeleteDolgozo(dolgozo);
 
                             ex = false;
                         }
@@ -557,10 +552,7 @@ namespace PassRegister.Program
                         {
                             Console.WriteLine("Törlendő ID-je: ");
                             ceg.CEG_ID = int.Parse(Console.ReadLine());
-                            if (l.ReadCeg().Contains(ceg))
-                            {
-                                l.DeleteCeg(ceg);
-                            }
+                            l.DeleteCeg(ceg);
 
                             ex = false;
                         }
@@ -723,10 +715,7 @@ namespace PassRegister.Program
                         {
                             Console.WriteLine("Törlendő ID-je: ");
                             vasarlas.VASARLAS_ID = int.Parse(Console.ReadLine());
-                            if (l.ReadVasarlas().Contains(vasarlas))
-                            {
-                                l.DeleteVasarlas(vasarlas);
-                            }
+                            l.DeleteVasarlas(vasarlas);
 
                             ex = false;
                         }
