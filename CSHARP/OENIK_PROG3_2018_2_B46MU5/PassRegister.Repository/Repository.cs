@@ -49,8 +49,11 @@ namespace PassRegister.Repository
         /// <param name="entity">The generic element of a table.</param>
         public void Delete(TEntity entity)
         {
-            this.entities.Remove(entity);
-            this.dbe.SaveChanges();
+            if (entity != null)
+            {
+                this.entities.Remove(entity);
+                this.dbe.SaveChanges();
+            }
         }
 
         /// <summary>

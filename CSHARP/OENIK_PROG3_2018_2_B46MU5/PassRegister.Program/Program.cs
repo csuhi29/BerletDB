@@ -57,11 +57,19 @@ namespace PassRegister.Program
 
                         break;
                     case "8":
-                        l.WebRequest();
+                        JavaEndPoint();
                         break;
                 }
             }
             while (cki.Key != ConsoleKey.Escape);
+        }
+
+        /// <summary>
+        /// Calls the Logic's WebRequest method to get data form the JAVA endpoint.
+        /// </summary>
+        public static void JavaEndPoint()
+        {
+            l.WebRequest();
         }
 
         /// <summary>
@@ -292,16 +300,21 @@ namespace PassRegister.Program
                     bool jo = true;
                     while (jo)
                     {
-                        Console.WriteLine("[dolgozo_id,ceg_id,nev ,nem ,szuletesi_hely ,szuletesi_ev ,igazolvany_szam ]");
-                        Console.WriteLine("Ebben a sorrendben kérem írja be az adatokat, minden adat után 'enter' leütése szükséges.");
                         try
                         {
+                            Console.Write("Dolgozó ID: ");
                             dolgozo.DOLGOZO_ID = int.Parse(Console.ReadLine());
+                            Console.Write("Cég ID: ");
                             dolgozo.CEG_ID = int.Parse(Console.ReadLine());
+                            Console.Write("Dolgozó neve: ");
                             dolgozo.NEV = Console.ReadLine();
+                            Console.Write("Dolgozó neme: [f/l] ");
                             dolgozo.NEM = Console.ReadLine();
+                            Console.Write("Születési hely: ");
                             dolgozo.SZULETESI_HELY = Console.ReadLine();
+                            Console.Write("Születési év [yyyy]: ");
                             dolgozo.SZULETESI_EV = int.Parse(Console.ReadLine());
+                            Console.Write("Igazolvány szám: ");
                             dolgozo.IGAZOLVANY_SZAM = int.Parse(Console.ReadLine());
                             l.CreateDolgozo(dolgozo);
                             jo = false;
@@ -453,15 +466,19 @@ namespace PassRegister.Program
                     bool jo = true;
                     while (jo)
                     {
-                        Console.WriteLine("[ceg_id, cegnev, szekhely, adoszam, alapitas_datuma, jegyzett_toke]");
-                        Console.WriteLine("Ebben a sorrendben kérem írja be az adatokat, minden adat után 'enter' leütése szükséges.");
                         try
                         {
+                            Console.Write("Cég_ID: ");
                             ceg.CEG_ID = int.Parse(Console.ReadLine());
+                            Console.Write("Cégnév: ");
                             ceg.CEGNEV = Console.ReadLine();
+                            Console.Write("Székhely: ");
                             ceg.SZEKHELY = Console.ReadLine();
+                            Console.Write("Adószám: ");
                             ceg.ADOSZAM = int.Parse(Console.ReadLine());
+                            Console.Write("Alapítás dátuma [yyyy.mm.dd.]");
                             ceg.ALAPITAS_DATUMA = DateTime.Parse(Console.ReadLine());
+                            Console.Write("Jegyzett tőke: ");
                             ceg.JEGYZETT_TOKE = int.Parse(Console.ReadLine());
                             l.CreateCeg(ceg);
                             jo = false;

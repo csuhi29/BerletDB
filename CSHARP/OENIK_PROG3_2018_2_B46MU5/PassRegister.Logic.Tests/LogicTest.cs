@@ -294,7 +294,7 @@ namespace PassRegister.Logic.Tests
             this.LogicTester.DeleteDolgozo(d);
             Assert.That(this.LogicTester.ReadDolgozo().Count, Is.EqualTo(expected));
             Assert.That(this.LogicTester.ReadDolgozo().Where(x => x.DOLGOZO_ID == 10).Count, Is.EqualTo(0));
-            this.DolgozoMoq.Verify(x => x.Read(), Times.Exactly(2));
+            this.DolgozoMoq.Verify(x => x.Read(), Times.Exactly(3));
             this.DolgozoMoq.Verify(x => x.Delete(It.IsAny<DOLGOZO>()), Times.Once);
         }
 
@@ -309,7 +309,7 @@ namespace PassRegister.Logic.Tests
             this.LogicTester.DeleteBerlet(b);
             Assert.That(this.LogicTester.ReadBerlet().Count, Is.EqualTo(expected));
             Assert.That(this.LogicTester.ReadBerlet().Where(x => x.BERLET_ID == 1).Count, Is.EqualTo(0));
-            this.BerletMoq.Verify(x => x.Read(), Times.Exactly(2));
+            this.BerletMoq.Verify(x => x.Read(), Times.Exactly(3));
             this.BerletMoq.Verify(x => x.Delete(It.IsAny<BERLET>()), Times.Once);
         }
 
@@ -324,7 +324,7 @@ namespace PassRegister.Logic.Tests
             this.LogicTester.DeleteCeg(c);
             Assert.That(this.LogicTester.ReadCeg().Count, Is.EqualTo(expected));
             Assert.That(this.LogicTester.ReadCeg().Where(x => x.CEG_ID == 11).Count, Is.EqualTo(0));
-            this.CegMoq.Verify(x => x.Read(), Times.Exactly(2));
+            this.CegMoq.Verify(x => x.Read(), Times.Exactly(3));
             this.CegMoq.Verify(x => x.Delete(It.IsAny<CEG>()), Times.Once);
         }
 
@@ -339,7 +339,7 @@ namespace PassRegister.Logic.Tests
             this.LogicTester.DeleteVasarlas(v);
             Assert.That(this.LogicTester.ReadVasarlas().Count, Is.EqualTo(expected));
             Assert.That(this.LogicTester.ReadVasarlas().Where(x => x.VASARLAS_ID == 111).Count, Is.EqualTo(0));
-            this.VasarlasMoq.Verify(x => x.Read(), Times.Exactly(2));
+            this.VasarlasMoq.Verify(x => x.Read(), Times.Exactly(3));
             this.VasarlasMoq.Verify(x => x.Delete(It.IsAny<VASARLAS>()), Times.Once);
         }
 

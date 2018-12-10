@@ -69,16 +69,26 @@ namespace PassRegister.Logic
                 Console.WriteLine("BERLET_ID   MEGNEVEZES   AR   ERVENYESSEGI_IDO   KEDVEZMENY_TIPUS   BERLET_FORMATUM");
                 Console.WriteLine(b.BERLET_ID + " " + b.MEGNEVEZES + " " + b.AR + " " + b.ERVENYESSEG_IDO + " " + b.KEDVEZMENY_TIPUS + " " + b.BERLET_FORMATUM);
                 Console.WriteLine("Elmenti? [Y / N]");
-                ConsoleKeyInfo k = Console.ReadKey();
-                if (k.Key == ConsoleKey.Y)
+                ConsoleKeyInfo k = Console.ReadKey(true);
+                switch (k.KeyChar.ToString())
                 {
-                    this.berlet.Add(b);
+                    case "y":
+                        if (!this.berlet.Read().Any(x => x.BERLET_ID == b.BERLET_ID))
+                        {
+                            this.berlet.Add(b);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Már létezik ilyen ID ezért nem lehet elmenteni az újonnan generált bérletet.");
+                        }
+
+                        break;
                 }
             }
             catch (HttpRequestException e)
             {
                 Console.WriteLine(e.Message);
-                Console.WriteLine("Nem sikerült elindítani a Servletet. Kérem próbálja újbol.");
+                Console.WriteLine("Nem sikerült elindítani a Servletet. Kérem próbálja újbol. Esetleg nem fut a java végpont?");
             }
         }
 
