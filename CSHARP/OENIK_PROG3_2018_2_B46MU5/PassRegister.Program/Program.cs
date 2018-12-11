@@ -141,15 +141,19 @@ namespace PassRegister.Program
                     bool jo = true;
                     while (jo)
                     {
-                        Console.WriteLine("[BERLET_ID, MEGNEVEZES, AR, ERVENYESSEGI_IDO, KEDVEZMENY_TIPUS, BERLET_FORMATUM]");
-                        Console.WriteLine("Ebben a sorrendben kérem írja be az adatokat, minden adat után 'enter' leütése szükséges.");
                         try
                         {
+                            Console.Write("Bérlet ID: ");
                             berlet.BERLET_ID = int.Parse(Console.ReadLine());
+                            Console.Write("Megnevezés: ");
                             berlet.MEGNEVEZES = Console.ReadLine();
+                            Console.Write("Ár: ");
                             berlet.AR = int.Parse(Console.ReadLine());
+                            Console.Write("Érvényességi idő: ");
                             berlet.ERVENYESSEG_IDO = int.Parse(Console.ReadLine());
+                            Console.Write("Kedvezmény típus: ");
                             berlet.KEDVEZMENY_TIPUS = Console.ReadLine();
+                            Console.Write("Bérlet formátum: ");
                             berlet.BERLET_FORMATUM = Console.ReadLine();
                             l.CreateBerlet(berlet);
                             jo = false;
@@ -628,8 +632,6 @@ namespace PassRegister.Program
                     bool jo = true;
                     while (jo)
                     {
-                        Console.WriteLine("vasarlas_id, dolgozo_id, berlet_id, berlet_megnevezes, igazolvany_szam, ervenyesseg_kezdete");
-                        Console.WriteLine("Ebben a sorrendben kérem írja be az adatokat, minden adat után 'enter' leütése szükséges.");
                         try
                         {
                             Console.Write("Vásárlás ID: ");
