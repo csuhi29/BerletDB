@@ -37,9 +37,10 @@ public class PassRegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/json");
         String berlet = request.getParameter("berlet");
+        Integer ID = Integer.parseInt(request.getParameter("azonosito"));
         Random rnd = new Random();
         BerletMethods methods = new BerletMethods();
-        BERLET b = new BERLET(300 + rnd.nextInt(700),berlet,1000+rnd.nextInt(5000),rnd.nextInt(60),methods.KedvezmenyGenerator(),methods.FormatumGenerator());
+        BERLET b = new BERLET(ID+10,berlet,1000+rnd.nextInt(5000),rnd.nextInt(60),methods.KedvezmenyGenerator(),methods.FormatumGenerator());
         Gson gson = new Gson();
         String json = gson.toJson(b);
         try (PrintWriter out = response.getWriter()) {
