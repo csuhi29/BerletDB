@@ -63,23 +63,24 @@ namespace PassRegister.Logic
                 HttpClient client = new HttpClient();
                 Console.Write("Adja meg milyen megnevezésű bérletet kíván felvenni: ");
                 string megnevezes = Console.ReadLine();
-                string response = await client.GetStringAsync("http://localhost:8080/PassRegister.JavaWeb/PassRegisterServlet?berlet=" + megnevezes);
+                IEnumerable<int> azonosito = from a in this.berlet.Read()
+                                orderby a.BERLET_ID descending
+                                select a.BERLET_ID;
+                int realAzonosito = azonosito.FirstOrDefault();
+                string response = await client.GetStringAsync("http://localhost:8080/PassRegister.JavaWeb/PassRegisterServlet?azonosito=" + realAzonosito + "&berlet=" + megnevezes);
                 BERLET b = new JavaScriptSerializer().Deserialize<BERLET>(response);
                 Console.WriteLine("Új rendelés: ");
                 Console.WriteLine("BERLET_ID   MEGNEVEZES   AR   ERVENYESSEGI_IDO   KEDVEZMENY_TIPUS   BERLET_FORMATUM");
                 Console.WriteLine(b.BERLET_ID + " " + b.MEGNEVEZES + " " + b.AR + " " + b.ERVENYESSEG_IDO + " " + b.KEDVEZMENY_TIPUS + " " + b.BERLET_FORMATUM);
-                Console.WriteLine("Elmenti? [Y / N]");
-                ConsoleKeyInfo k = Console.ReadKey(true);
+                Console.WriteLine("Elmenti? [Y / N] Elmentéshez !!!!!!!!2 alkalommal egymás utáni 'Y' letütés szükséges.!!!!!!!");
+                ConsoleKeyInfo k;
+                k= Console.ReadKey(true);
                 switch (k.KeyChar.ToString())
                 {
                     case "y":
                         if (!this.berlet.Read().Any(x => x.BERLET_ID == b.BERLET_ID))
                         {
                             this.berlet.Add(b);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Már létezik ilyen ID ezért nem lehet elmenteni az újonnan generált bérletet.");
                         }
 
                         break;
