@@ -74,7 +74,7 @@ namespace PassRegister.Logic
                 Console.WriteLine(b.BERLET_ID + " " + b.MEGNEVEZES + " " + b.AR + " " + b.ERVENYESSEG_IDO + " " + b.KEDVEZMENY_TIPUS + " " + b.BERLET_FORMATUM);
                 Console.WriteLine("Elmenti? [Y / N] Elmentéshez !!!!!!!!2 alkalommal egymás utáni 'Y' letütés szükséges.!!!!!!!");
                 ConsoleKeyInfo k;
-                k= Console.ReadKey(true);
+                k = Console.ReadKey(true);
                 switch (k.KeyChar.ToString())
                 {
                     case "y":
